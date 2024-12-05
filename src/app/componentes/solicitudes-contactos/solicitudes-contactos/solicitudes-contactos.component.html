@@ -1,0 +1,72 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="display-4">Aquí Podras Ver Todas las Solicitudes</h1>
+                <p class="lead">Revisa todas las solicitudes que han realizado a través del formulario de Contacto</p>
+                <hr class="my-4">
+                <p>El siguiente botón Cargará todas las solicitudes y si necesita actualizar la tabla de solicitudes vuelve a presionar el botón</p>
+                <p class="lead">
+                <a class="btn btn-primary btn-lg" (click)="obtenerSolicitudesFormulario()" role="button">Ver/actualizar Datos</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped ">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Telefono</th>
+                        <th class="col-md-auto" scope="col">Mensaje</th>
+                        <th class="col-md-auto" scope="col">Acciones</th>
+                      </tr>
+                    </thead >
+                    <tbody >
+                      <tr *ngFor="let solicitud of solicitudes_formulario">
+                        <td class="col">{{ solicitud.nombre }}</td>
+                        <td class="col">{{ solicitud.apellido }}</td>
+                        <td class="col">{{ solicitud.correo }}</td>
+                        <td class="col">{{ solicitud.telefono }}</td>
+                        <td class="col-md-auto" ><button type="button" (click)="verMensajeEnModal(solicitud)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mensajeModal">
+                            Ver
+                          </button>   
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="eliminarSolicitudFormulario(solicitud._id)"><i class="bi bi-trash"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="mensajeModalLabel">Mensaje de {{datosModal.nombre}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            {{ datosModal.mensaje }}
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- FIN Modal -->

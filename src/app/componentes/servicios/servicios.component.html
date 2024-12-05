@@ -1,0 +1,16 @@
+<br>
+<div class="container letra">
+    <h2 class="text-center mb-4">Servicios</h2>
+<div class="card-group">
+    <div *ngFor="let servicio of serviciosinfo" class="card">
+      <img src="assets/456489598_2519837488224796_493320068497481550_n.jpg" class="card-img-top" alt="Service image">
+      <div class="card-body">
+        <h5 class="card-title">{{ servicio.nombre }}</h5>
+        <p class="card-text">{{ servicio.descripcion }}</p>
+        <p class="card-text"><strong>Valor: </strong>${{ servicio.valor | number:'1.0-0' }}</p>
+        <p class="card-text"><small class="text-muted">ID: {{ servicio._id }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
